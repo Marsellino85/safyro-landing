@@ -5,8 +5,23 @@ import EmailForm from './components/EmailForm'
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-6 py-20 md:py-24">
-      <div className="w-full max-w-[640px] flex flex-col items-center text-center">
+    <main style={{
+      minHeight: '100vh',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '60px 20px',
+      background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+    }}>
+      <div style={{
+        width: '100%',
+        maxWidth: '1440px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '48px',
+      }}>
         <HeroSection />
         <ValueProps />
         <Timeline />

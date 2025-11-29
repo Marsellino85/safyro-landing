@@ -1,30 +1,47 @@
+'use client'
+
 import Logo from './Logo'
+import { useEffect, useState } from 'react'
 
 export default function HeroSection() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <section style={{ 
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginBottom: '48px',
+      marginBottom: isMobile ? '32px' : '48px',
     }}>
       <Logo />
       
       <h1 style={{
-        fontSize: '96px',
+        fontSize: isMobile ? '56px' : '96px',
         fontWeight: 700,
         color: '#FFFFFF',
-        margin: '0',
         marginBottom: '24px',
         lineHeight: '1.1',
         letterSpacing: '-0.02em',
+        margin: '0',
+        marginBottom: '24px',
       }}>
         SAFYRO
       </h1>
       
       <p style={{
-        fontSize: '32px',
+        fontSize: isMobile ? '20px' : '32px',
         fontWeight: 400,
         color: '#E2E8F0',
         lineHeight: '1.3',

@@ -1,11 +1,28 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 export default function Timeline() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <section style={{
       textAlign: 'center',
-      marginBottom: '40px',
+      marginBottom: isMobile ? '32px' : '40px',
     }}>
       <p style={{
-        fontSize: '24px',
+        fontSize: isMobile ? '18px' : '24px',
         fontWeight: 500,
         color: 'rgba(255, 255, 255, 0.8)',
         lineHeight: '1.2',
