@@ -19,7 +19,8 @@ export default function Logo() {
 
   return (
     <div style={{ 
-      marginBottom: isMobile ? '16px' : '32px' 
+      marginBottom: isMobile ? '16px' : '32px',
+      textAlign: 'center',
     }}>
       <Image
         src="/logo.svg"

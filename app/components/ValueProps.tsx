@@ -26,26 +26,32 @@ export default function ValueProps() {
     <section style={{
       width: '100%',
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: isMobile ? '10px' : '12px',
+      justifyContent: 'center',
       marginBottom: isMobile ? '32px' : '48px',
     }}>
-      {values.map((value, index) => (
-        <p 
-          key={index}
-          style={{
-            fontSize: isMobile ? '16px' : '20px',
-            fontWeight: 400,
-            color: '#A0AEC0',
-            lineHeight: '1.3',
-            letterSpacing: '0',
-            margin: '0',
-          }}
-        >
-          {value}
-        </p>
-      ))}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: isMobile ? '10px' : '12px',
+        maxWidth: '700px',
+      }}>
+        {values.map((value, index) => (
+          <p 
+            key={index}
+            style={{
+              fontSize: isMobile ? '16px' : '20px',
+              fontWeight: 400,
+              color: '#A0AEC0',
+              lineHeight: '1.3',
+              letterSpacing: '0',
+              margin: '0',
+            }}
+          >
+            {value}
+          </p>
+        ))}
+      </div>
     </section>
   )
 }

@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 
 export default function EmailForm() {
   const [email, setEmail] = useState('')
-  const [isMobile, setIsMobile] = useState(false)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
@@ -81,7 +81,7 @@ export default function EmailForm() {
           style={{
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
-            gap: isMobile ? '12px' : '12px',
+            gap: '12px',
             width: '100%',
             alignItems: isMobile ? 'stretch' : 'center',
           }}
@@ -97,7 +97,7 @@ export default function EmailForm() {
             style={{
               flex: 1,
               padding: '0 20px',
-              height: '56px',
+              height: isMobile ? '48px' : '56px',
               borderRadius: '8px',
               fontSize: '16px',
               fontWeight: 400,
@@ -123,7 +123,6 @@ export default function EmailForm() {
             disabled={loading || !email}
             style={{
               padding: isMobile ? '0 16px' : '0 24px',
-              width: isMobile ? 'auto' : 'auto',
               height: isMobile ? '48px' : '56px',
               borderRadius: '8px',
               fontSize: isMobile ? '14px' : '16px',
@@ -162,19 +161,20 @@ export default function EmailForm() {
         }}>
           Early access   •   Priority support   •   Shape the future
         </p>
-      </div>
 
-      {message && (
-        <p style={{
-          textAlign: 'center',
-          marginTop: '12px',
-          fontSize: '14px',
-          fontWeight: 400,
-          color: messageType === 'success' ? '#E2E8F0' : '#FF6B6B',
-        }}>
-          {message}
-        </p>
-      )}
+        {message && (
+          <p style={{
+            textAlign: 'center',
+            marginTop: '12px',
+            fontSize: '14px',
+            fontWeight: 400,
+            color: messageType === 'success' ? '#E2E8F0' : '#FF6B6B',
+          }}>
+            {message}
+          </p>
+        )}
+      </div>
     </section>
   )
 }
+

@@ -27,7 +27,7 @@ export default function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: isMobile ? '40px 16px' : '60px 20px',
+      padding: isMobile ? '40px 16px' : '80px 40px',
       background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
     }}>
       <div style={{
@@ -36,7 +36,8 @@ export default function Home() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: isMobile ? '32px' : '48px',
+        justifyContent: 'center',
+        gap: isMobile ? '32px' : '64px',
       }}>
         <HeroSection />
         <ValueProps />

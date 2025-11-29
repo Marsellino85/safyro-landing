@@ -20,6 +20,7 @@ export default function Timeline() {
     <section style={{
       textAlign: 'center',
       marginBottom: isMobile ? '32px' : '40px',
+      width: '100%',
     }}>
       <p style={{
         fontSize: isMobile ? '18px' : '24px',
