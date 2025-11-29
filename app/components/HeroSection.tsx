@@ -31,11 +31,10 @@ export default function HeroSection() {
         fontSize: isMobile ? '56px' : '96px',
         fontWeight: 700,
         color: '#FFFFFF',
+        margin: '0',
         marginBottom: '24px',
         lineHeight: '1.1',
         letterSpacing: '-0.02em',
-        margin: '0',
-        marginBottom: '24px',
       }}>
         SAFYRO
       </h1>
