@@ -25,7 +25,6 @@ export default function ValueProps() {
   return (
     <section style={{
       width: '100%',
-      maxWidth: isMobile ? '90%' : '100%',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
