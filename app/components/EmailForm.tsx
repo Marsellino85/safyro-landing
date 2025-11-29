@@ -122,11 +122,11 @@ export default function EmailForm() {
             type="submit"
             disabled={loading || !email}
             style={{
-              padding: isMobile ? '0' : '0 24px',
-              width: isMobile ? '100%' : 'auto',
-              height: '56px',
+              padding: isMobile ? '0 16px' : '0 24px',
+              width: isMobile ? 'auto' : 'auto',
+              height: isMobile ? '48px' : '56px',
               borderRadius: '8px',
-              fontSize: '16px',
+              fontSize: isMobile ? '14px' : '16px',
               fontWeight: 600,
               color: '#FFFFFF',
               border: 'none',
