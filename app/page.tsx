@@ -1,9 +1,25 @@
+'use client'
+
 import HeroSection from './components/HeroSection'
 import ValueProps from './components/ValueProps'
 import Timeline from './components/Timeline'
 import EmailForm from './components/EmailForm'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <main style={{
       minHeight: '100vh',
@@ -11,7 +27,7 @@ export default function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '60px 20px',
+      padding: isMobile ? '40px 16px' : '60px 20px',
       background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
     }}>
       <div style={{
@@ -20,7 +36,7 @@ export default function Home() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '48px',
+        gap: isMobile ? '32px' : '48px',
       }}>
         <HeroSection />
         <ValueProps />
