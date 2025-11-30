@@ -46,6 +46,9 @@ export default function ValueProps() {
               lineHeight: '1.3',
               letterSpacing: '0',
               margin: '0',
+              paddingLeft: '24px',
+              textIndent: '-18px',
+              display: 'block',
             }}
           >
             {value}

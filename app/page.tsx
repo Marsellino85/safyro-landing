@@ -37,7 +37,7 @@ export default function Home() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: isMobile ? '32px' : '64px',
+        gap: '0',
       }}>
         <HeroSection />
         <ValueProps />

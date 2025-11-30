@@ -51,10 +51,11 @@ export default function EmailForm() {
       display: 'flex',
       justifyContent: 'center',
       padding: isMobile ? '0 16px' : '0 24px',
+      marginBottom: 0,
     }}>
       <div style={{
         width: '100%',
-        maxWidth: isMobile ? '100%' : '640px',
+        maxWidth: '640px',
         padding: isMobile ? '16px' : '20px',
         borderRadius: '16px',
         background: 'rgba(255, 255, 255, 0.03)',
@@ -88,6 +89,9 @@ export default function EmailForm() {
         >
           <input
             type="email"
+            id="email"
+            name="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
@@ -95,9 +99,13 @@ export default function EmailForm() {
             aria-label="Email address"
             disabled={loading}
             style={{
-              flex: 1,
-              padding: '0 20px',
-              height: isMobile ? '48px' : '56px',
+              flex: isMobile ? 'none' : 1,
+              width: isMobile ? '100%' : 'auto',
+              paddingTop: isMobile ? '12px' : '8px',
+              paddingBottom: isMobile ? '12px' : '8px',
+              paddingLeft: '16px',
+              paddingRight: '16px',
+              height: isMobile ? '28px' : '56px',
               borderRadius: '8px',
               fontSize: '16px',
               fontWeight: 400,
@@ -105,6 +113,9 @@ export default function EmailForm() {
               background: 'rgba(255, 255, 255, 0.05)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
               outline: 'none',
+              textAlign: isMobile ? 'center' : 'left',
+              lineHeight: 'normal',
+              boxSizing: 'border-box',
             }}
             onFocus={(e) => {
               e.currentTarget.style.border = '1px solid #0F52BA'
@@ -123,9 +134,9 @@ export default function EmailForm() {
             disabled={loading || !email}
             style={{
               padding: isMobile ? '0 16px' : '0 24px',
-              height: isMobile ? '48px' : '56px',
+              height: '56px',
               borderRadius: '8px',
-              fontSize: isMobile ? '14px' : '16px',
+              fontSize: '16px',
               fontWeight: 600,
               color: '#FFFFFF',
               border: 'none',
