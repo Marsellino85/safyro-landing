@@ -153,7 +153,7 @@ export default function EmailForm() {
               }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#0F52BA'
+              e.currentTarget.style.background = loading || !email ? '#334155' : '#0F52BA'
               e.currentTarget.style.transform = 'translateY(0px)'
               e.currentTarget.style.boxShadow = 'none'
             }}
