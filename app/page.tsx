@@ -27,17 +27,46 @@ export default function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: isMobile ? '40px 16px' : '80px 40px',
-      background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+      background: '#0A0F1C',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {/* Background Gradient */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        background: 'radial-gradient(ellipse at top right, rgba(30, 58, 138, 0.2) 0%, #0A0F1C 50%, #0A0F1C 100%)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+      
+      {/* Background Image */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: 'url(/background.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        opacity: 0.3,
+        mixBlendMode: 'overlay',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+
       <div style={{
         width: '100%',
-        maxWidth: '1440px',
+        maxWidth: '896px',
+        padding: '0 16px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0',
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 1,
       }}>
         <HeroSection />
         <ValueProps />

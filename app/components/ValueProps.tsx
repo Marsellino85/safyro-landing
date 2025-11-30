@@ -17,45 +17,60 @@ export default function ValueProps() {
   }, [])
 
   const values = [
-    '✓ Waterfall precision & Agile flexibility',
-    '✓ One platform, zero methodology lock-in',
-    '✓ Structure when you need it. Freedom when you don\'t',
+    'Waterfall precision & Agile flexibility',
+    'One platform, zero methodology lock-in',
+    'Structure when you need it. Freedom when you don\'t',
   ]
 
+  const CheckCircleIcon = () => (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#60A5FA"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ flexShrink: 0 }}
+    >
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  )
+
   return (
-    <section style={{
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      marginBottom: isMobile ? '32px' : '48px',
+    <div style={{
+      display: 'inline-block',
+      textAlign: 'left',
+      marginBottom: '48px',
     }}>
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
-        gap: isMobile ? '10px' : '12px',
-        maxWidth: '700px',
+        gap: '16px',
       }}>
         {values.map((value, index) => (
-          <p 
+          <div 
             key={index}
             style={{
-              fontSize: isMobile ? '16px' : '20px',
-              fontWeight: 400,
-              color: '#A0AEC0',
-              lineHeight: '1.3',
-              letterSpacing: '0',
-              margin: '0',
-              paddingLeft: '24px',
-              textIndent: '-18px',
-              display: 'block',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              color: '#CBD5E1',
             }}
           >
-            {value}
-          </p>
+            <CheckCircleIcon />
+            <span style={{
+              fontSize: isMobile ? '14px' : '16px',
+              fontWeight: 400,
+            }}>
+              {value}
+            </span>
+          </div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
 

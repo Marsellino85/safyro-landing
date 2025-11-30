@@ -18,40 +18,34 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section style={{ 
-      textAlign: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: isMobile ? '32px' : '48px',
-      width: '100%',
-    }}>
+    <>
       <Logo />
       
       <h1 style={{
-        fontSize: isMobile ? '56px' : '96px',
+        fontSize: isMobile ? '48px' : '60px',
         fontWeight: 700,
         color: '#FFFFFF',
-        lineHeight: '1.1',
-        letterSpacing: '-0.02em',
+        lineHeight: '1.2',
+        letterSpacing: '-0.025em',
         margin: '0',
         marginBottom: '24px',
+        textAlign: 'center',
       }}>
         SAFYRO
       </h1>
       
       <p style={{
-        fontSize: isMobile ? '20px' : '32px',
-        fontWeight: 400,
-        color: '#E2E8F0',
-        lineHeight: '1.3',
-        letterSpacing: '-0.005em',
+        fontSize: isMobile ? '20px' : '24px',
+        fontWeight: 300,
+        color: '#CBD5E1',
+        lineHeight: '1.5',
         margin: '0',
+        marginBottom: '32px',
+        textAlign: 'center',
       }}>
         Where Precision Meets Freedom
       </p>
-    </section>
+    </>
   )
 }
 

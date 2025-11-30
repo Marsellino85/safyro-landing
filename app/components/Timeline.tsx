@@ -1,38 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 export default function Timeline() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768)
-    
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
   return (
-    <section style={{
+    <div style={{
       textAlign: 'center',
-      marginBottom: isMobile ? '32px' : '48px',
-      width: '100%',
+      marginBottom: '40px',
     }}>
       <p style={{
-        fontSize: isMobile ? '18px' : '24px',
+        fontSize: '16px',
         fontWeight: 500,
-        color: 'rgba(255, 255, 255, 0.8)',
-        lineHeight: '1.2',
-        letterSpacing: '0',
+        color: '#94A3B8',
         margin: '0',
       }}>
         Beta launching Spring 2026
       </p>
-    </section>
+    </div>
   )
 }
 
