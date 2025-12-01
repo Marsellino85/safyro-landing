@@ -6,6 +6,8 @@ export default function EmailForm() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
@@ -24,8 +26,31 @@ export default function EmailForm() {
     if (!email) return
 
     setLoading(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setLoading(false)
+    setError(null)
+    setSuccess(false)
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      setSuccess(true)
+      setEmail('')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to join waitlist')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const ArrowRightIcon = () => (
@@ -149,18 +174,46 @@ export default function EmailForm() {
         </button>
       </form>
 
-      <p style={{
-        fontSize: isMobile ? '10px' : '12px',
-        fontWeight: 400,
-        color: '#64748B',
-        textAlign: 'center',
-        margin: '0',
-        marginTop: '16px',
-      }}>
-        <span style={{ color: '#94A3B8', fontWeight: 500 }}>Early access</span> • 
-        <span style={{ color: '#94A3B8', fontWeight: 500 }}> Priority support</span> • 
-        <span style={{ color: '#94A3B8', fontWeight: 500 }}> Shape the future</span>
-      </p>
+      {success && (
+        <p style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: '#10B981',
+          textAlign: 'center',
+          margin: '0',
+          marginTop: '16px',
+        }}>
+          ✓ Thanks! You've been added
+        </p>
+      )}
+
+      {error && (
+        <p style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: '#EF4444',
+          textAlign: 'center',
+          margin: '0',
+          marginTop: '16px',
+        }}>
+          {error}
+        </p>
+      )}
+
+      {!success && !error && (
+        <p style={{
+          fontSize: isMobile ? '10px' : '12px',
+          fontWeight: 400,
+          color: '#64748B',
+          textAlign: 'center',
+          margin: '0',
+          marginTop: '16px',
+        }}>
+          <span style={{ color: '#94A3B8', fontWeight: 500 }}>Early access</span> • 
+          <span style={{ color: '#94A3B8', fontWeight: 500 }}> Priority support</span> • 
+          <span style={{ color: '#94A3B8', fontWeight: 500 }}> Shape the future</span>
+        </p>
+      )}
     </div>
   )
 }
