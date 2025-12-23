@@ -27,7 +27,7 @@ export default function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: '#17163e',
+      background: '#0A0F1C',
       position: 'relative',
       overflow: 'hidden',
     }}>
@@ -37,7 +37,7 @@ export default function Home() {
         inset: 0,
         width: '100%',
         height: '100%',
-        background: 'radial-gradient(ellipse at top right, rgba(30, 58, 138, 0.2) 0%, #17163e 50%, #17163e 100%)',
+        background: 'radial-gradient(ellipse at top right, rgba(30, 58, 138, 0.2) 0%, #0A0F1C 50%, #0A0F1C 100%)',
         pointerEvents: 'none',
         zIndex: 0,
       }} />
