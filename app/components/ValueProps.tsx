@@ -17,8 +17,8 @@ export default function ValueProps() {
   }, [])
 
   const values = [
-    'Waterfall precision & Agile flexibility',
-    'One platform, zero methodology lock-in',
+    'Waterfall precision meets Agile flexibility',
+    'Real-time cost tracking & budget monitoring',
     'Structure when you need it. Freedom when you don\'t',
   ]
 
