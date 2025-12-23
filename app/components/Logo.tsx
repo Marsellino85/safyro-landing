@@ -17,7 +17,7 @@ export default function Logo() {
         justifyContent: 'center',
       }}>
         <Image
-          src="/logo.svg"
+          src="/logo.png"
           alt="SAFYRO"
           width={96}
           height={96}
