@@ -50,19 +50,27 @@ export async function POST(request: NextRequest) {
     }
 
     // Send welcome email via Resend
+    // Send welcome email via Resend
+    console.log('🚀 Attempting to send email to:', normalizedEmail);
+    console.log('🔑 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
+    console.log('🔑 RESEND_API_KEY prefix:', process.env.RESEND_API_KEY?.substring(0, 8));
+
     try {
-      await resend.emails.send({
-        from: 'SAFYRO <onboarding@resend.dev>', // Změň na hello@safyro.io po verify domény
+      const result = await resend.emails.send({
+        from: 'SAFYRO <onboarding@resend.dev>',
         to: normalizedEmail,
         subject: 'Welcome to SAFYRO Beta Waitlist! 🚀',
         html: getWelcomeEmailHTML(normalizedEmail),
       });
+
+      console.log('✅ Email sent successfully:', result);
     } catch (emailError) {
-      // Log but don't fail - user is already in DB
-      console.error('Email send error:', emailError);
+      console.error('❌ Email send error:', emailError);
+      console.error('❌ Error type:', typeof emailError);
+      console.error('❌ Error stringified:', JSON.stringify(emailError, null, 2));
     }
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
       message: 'Successfully joined the waitlist! Check your email.'
     });
