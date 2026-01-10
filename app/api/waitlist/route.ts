@@ -50,14 +50,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Send welcome email via Resend
-    // Send welcome email via Resend
     console.log('🚀 Attempting to send email to:', normalizedEmail);
     console.log('🔑 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
     console.log('🔑 RESEND_API_KEY prefix:', process.env.RESEND_API_KEY?.substring(0, 8));
 
     try {
       const result = await resend.emails.send({
-        from: 'SAFYRO <onboarding@resend.dev>',
+        from: 'SAFYRO <hello@safyro.io>',
         to: normalizedEmail,
         subject: 'Welcome to SAFYRO Beta Waitlist! 🚀',
         html: getWelcomeEmailHTML(normalizedEmail),
