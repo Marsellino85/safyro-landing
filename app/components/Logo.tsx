@@ -1,21 +1,25 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
+import Image from 'next/image';
 
 export default function Logo() {
   return (
-    <div style={{ 
-      display: 'flex',
-      justifyContent: 'center',
-      marginBottom: '32px',
-    }}>
-      <div style={{
-        width: '96px',
-        height: '96px',
+    <div
+      style={{
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
-      }}>
+        marginBottom: '32px',
+      }}
+    >
+      <div
+        style={{
+          width: '96px',
+          height: '96px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Image
           src="/logo.png"
           alt="SAFYRO"
@@ -26,6 +30,5 @@ export default function Logo() {
         />
       </div>
     </div>
-  )
+  );
 }
-

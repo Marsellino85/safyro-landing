@@ -11,10 +11,7 @@ export async function POST(request: NextRequest) {
 
     // Validate email
     if (!email || typeof email !== 'string') {
-      return NextResponse.json(
-        { error: 'Email is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
     // Basic email validation
@@ -52,7 +49,10 @@ export async function POST(request: NextRequest) {
     // Send welcome email via Resend
     console.log('🚀 Attempting to send email to:', normalizedEmail);
     console.log('🔑 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
-    console.log('🔑 RESEND_API_KEY prefix:', process.env.RESEND_API_KEY?.substring(0, 8));
+    console.log(
+      '🔑 RESEND_API_KEY prefix:',
+      process.env.RESEND_API_KEY?.substring(0, 8)
+    );
 
     try {
       const result = await resend.emails.send({
@@ -66,12 +66,15 @@ export async function POST(request: NextRequest) {
     } catch (emailError) {
       console.error('❌ Email send error:', emailError);
       console.error('❌ Error type:', typeof emailError);
-      console.error('❌ Error stringified:', JSON.stringify(emailError, null, 2));
+      console.error(
+        '❌ Error stringified:',
+        JSON.stringify(emailError, null, 2)
+      );
     }
 
     return NextResponse.json({
       success: true,
-      message: 'Successfully joined the waitlist! Check your email.'
+      message: 'Successfully joined the waitlist! Check your email.',
     });
   } catch (error) {
     console.error('API error:', error);
@@ -97,10 +100,11 @@ function getWelcomeEmailHTML(email: string): string {
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          
           <!-- Header -->
           <tr>
             <td style="padding: 48px 48px 32px; text-align: center; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 12px 12px 0 0;">
+              <!-- Přidej logo nad text -->
+              <img src="https://safyro.io/logo.svg" alt="SAFYRO Logo" style="height: 80px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto;" />
               <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: #ffffff;">SAFYRO</h1>
               <p style="margin: 8px 0 0; font-size: 16px; color: rgba(255, 255, 255, 0.8);">Where Precision Meets Freedom</p>
             </td>
