@@ -100,11 +100,12 @@ function getWelcomeEmailHTML(email: string): string {
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <!-- Header -->
+          
+        <!-- Header -->
           <tr>
             <td style="padding: 48px 48px 32px; text-align: center; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 12px 12px 0 0;">
               <!-- Přidej logo nad text -->
-              <img src="https://safyro.io/logo.svg" alt="SAFYRO Logo" style="height: 80px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto;" />
+              <img src="https://safyro.io/logo.png" alt="SAFYRO Logo" style="height: 80px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto;" />
               <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: #ffffff;">SAFYRO</h1>
               <p style="margin: 8px 0 0; font-size: 16px; color: rgba(255, 255, 255, 0.8);">Where Precision Meets Freedom</p>
             </td>
