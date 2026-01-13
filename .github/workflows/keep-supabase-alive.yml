@@ -14,16 +14,23 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
-          response=$(curl -s -w "\n%{http_code}" -X POST "$SUPABASE_URL/rest/v1/waitlist?select=count" \
+          echo "Pinging Supabase at $SUPABASE_URL"
+          response=$(curl -s -w "\n%{http_code}" -X GET "$SUPABASE_URL/rest/v1/waitlist?select=id&limit=1" \
             -H "apikey: $SUPABASE_KEY" \
-            -H "Authorization: Bearer $SUPABASE_KEY")
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            -H "Content-Type: application/json")
           
           http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | head -n -1)
           
-          if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 201 ]; then
+          echo "Response body: $body"
+          echo "HTTP status: $http_code"
+          
+          if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 206 ]; then
             echo "✅ Supabase pinged successfully"
           else
             echo "❌ Ping failed with status $http_code"
+            echo "Full response: $response"
             exit 1
           fi
 
